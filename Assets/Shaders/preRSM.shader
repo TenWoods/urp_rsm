@@ -30,6 +30,14 @@ Shader "Hidden/preRSM"
                 float4 vertex : SV_POSITION;
             };
 
+            struct output
+            {
+                float4 worldFlux : COLOR0;
+                float4 worldNormal : COLOR1;
+                float4 worldPosition : COLOR2;
+                float4 depth : COLOR3;
+            };
+
             v2f vert (appdata v)
             {
                 v2f o;
@@ -40,12 +48,17 @@ Shader "Hidden/preRSM"
 
             sampler2D _MainTex;
 
-            fixed4 frag (v2f i) : SV_Target
+            output frag (v2f i) : SV_Target
             {
-                fixed4 col = tex2D(_MainTex, i.uv);
+                output o;
+                /*fixed4 col = tex2D(_MainTex, i.uv);
                 // just invert the colors
-                col.rgb = 1 - col.rgb;
-                return col;
+                col.rgb = 1 - col.rgb;*/
+                o.depth = float4(1.0, 1.0, 1.0, 1.0);
+                o.worldFlux = float4(1.0, 0.0, 0.0, 1.0);
+                o.worldNormal = float4(0.0, 1.0, 0.0, 1.0);
+                o.worldPosition = float4(0.0, 0.0, 1.0, 1.0);
+                return o;
             }
             ENDCG
         }

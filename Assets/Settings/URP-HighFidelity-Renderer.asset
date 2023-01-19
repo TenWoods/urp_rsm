@@ -95,11 +95,13 @@ MonoBehaviour:
   m_Name: RSMRenderFeature
   m_EditorClassIdentifier: 
   m_Active: 1
-  setttings:
+  settings:
     renderQueueType: 0
     layerMask:
       serializedVersion: 2
-      m_Bits: 8
+      m_Bits: 0
     renderPassEvent: 0
-    renderingLayerMask: 0
-  renderTextures: []
+    worldFlux: {fileID: 0}
+    worldNormal: {fileID: 0}
+    worldPosition: {fileID: 0}
+    depth: {fileID: 0}
